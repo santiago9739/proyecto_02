@@ -1,0 +1,22 @@
+<mat-toolbar color="">
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon"
+        aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+        <mat-menu #menu="matMenu">
+            <button *ngFor="let item of menuLinks" [routerLink]="item.redirect" mat-menu-item>
+                <mat-icon aria-hidden="false" aria-label="Example home icon">{{item.icon}}</mat-icon>{{item.nombre}}
+            </button>
+        </mat-menu>
+    </button>
+    <span routerLink="/dashboard" class="pointer">INICIO</span>
+    <span class="example-spacer"></span>
+
+    <img src="./assets/logo.png" class="mx-auto d-block" width="120px" />
+
+    <span class="mx-3 text-secondary">CENTRO DEPORTIVO UNIVERSITARIO</span>
+    <span class="example-spacer"></span>
+    <button routerLink="/dashboard/login" mat-icon-button class="example-icon"
+        aria-label="Example icon-button with logout icon">
+        <mat-icon>logout</mat-icon>
+    </button>
+</mat-toolbar>

@@ -1,0 +1,72 @@
+<div class="container">
+    <mat-toolbar color="primary">
+        <span>Usuarios</span>
+        <span class="example-spacer"></span>
+        <button mat-raised-button color="" (click)="crearUsuario()">Agregar Nuevo Usuario</button>
+    </mat-toolbar>
+    <div>Time: {{ time | async }}</div>
+    <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input autocomplete="off">
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="programa">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+                    programa
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.programa}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="codigo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> codigo </th>
+                <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="identificacion">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> identificacion </th>
+                <td mat-cell *matCellDef="let element"> {{element.identificacion}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombres">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> nombres </th>
+                <td mat-cell *matCellDef="let element"> {{element.nombres}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="apellidos">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> apellidos </th>
+                <td mat-cell *matCellDef="let element"> {{element.apellidos}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center;">
+                    <a matTooltip="Ver Usuario" class="pointer" style="color: rgb(192, 176, 176);">
+                        <mat-icon>search</mat-icon>
+                    </a>
+                    <a (click)="editarUsuario(element)" matTooltip="Editar Usuario" class="pointer"
+                        style="color: black;">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    <a (click)="eliminarUsuario(element)" matTooltip="Eliminar Usuario" class="pointer"
+                        style="color: crimson;">
+                        <mat-icon>delete</mat-icon>
+                    </a>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </div>
+
+
+</div>

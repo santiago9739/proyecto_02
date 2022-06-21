@@ -1,0 +1,78 @@
+<h2 mat-dialog-title style="text-align: center;">{{titulo}} Usuario</h2>
+<mat-dialog-content class=" mat-typography">
+    <div class="body">
+        <div class="login">
+
+            <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
+
+            <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="enviar()">
+
+                <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Facultad</mat-label>
+                    <mat-select [formControl]="facultadControl" (selectionChange)="onChangeFacultad()">
+                        <mat-option *ngFor="let item of listaFacultades" value="{{item.facultad}}">
+                            {{item.facultad}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <!--
+                <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Facultad</mat-label>
+                    <input matInput formControlName="facultad" autocomplete="off" value="fiet">
+                </mat-form-field>
+                -->
+
+                <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Programa</mat-label>
+                    <mat-select [formControl]="programaControl">
+                        <mat-option *ngFor="let item of listaProgramas" value="{{item.programa}}">{{item.programa}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Codigo</mat-label>
+                    <input (keyup)="onChangeStatus()" [formControl]="codControl" type="number" min="0" step="1" matInput
+                        autocapitalize="off" formControlName="codigo" autocomplete="off">
+                </mat-form-field>
+
+                <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Identificacion</mat-label>
+                    <input (keyup)="onChangeStatus()" [formControl]="idControl" type="number" min="0" step="1" matInput
+                        autocapitalize="off" formControlName="identificacion" autocomplete="off">
+                </mat-form-field>
+
+                <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Nombres</mat-label>
+                    <input (keyup)="onChangeStatus()" [formControl]="nombresControl" matInput autocapitalize="off"
+                        formControlName="nombres" autocomplete="off">
+                </mat-form-field>
+
+                <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Apellidos</mat-label>
+                    <input (keyup)="onChangeStatus()" [formControl]="apellidosControl" matInput autocapitalize="off"
+                        formControlName="apellidos" autocomplete="off">
+                </mat-form-field>
+
+                <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Usuario</mat-label>
+                    <input (keyup)="onChangeStatus()" [formControl]="usuarioControl" matInput autocapitalize="off"
+                        formControlName="usuario" autocomplete="off">
+                </mat-form-field>
+
+                <div class="example-button-row">
+                    <button type="submit" mat-raised-button [disabled]="!status"> Aceptar
+                        <mat-icon>check_circle_outline</mat-icon>
+                    </button>
+                    <button (click)="cancelar()" mat-raised-button> Cancelar
+                        <mat-icon>highlight_off</mat-icon>
+                    </button>
+                    <!--
+                    <button [mat-dialog-close]="false" mat-raised-button> Cancelar
+                        <mat-icon>highlight_off</mat-icon>
+                    </button>
+                    -->
+                </div>
+            </form>
+        </div>
+    </div>
+</mat-dialog-content>

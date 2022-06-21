@@ -1,0 +1,12 @@
+[
+    {
+        "nombre":"Usuario",
+        "redirect":"/dashboard/usuario",
+        "icon":"person_outline"
+    },
+    {
+        "nombre":"Reporte",
+        "redirect":"/dashboard/reporte",
+        "icon":"assignment"
+    }
+]
