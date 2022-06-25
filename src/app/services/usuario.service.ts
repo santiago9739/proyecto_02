@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Input, ViewChild } from '@angular/core';
+import { Login } from '@data/interfaces/login';
 import { Usuario } from '@data/interfaces/usuario';
+import { NavbarComponent } from 'app/components/dashboard/navbar/navbar.component';
 import { map, Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -10,14 +12,47 @@ export class UsuarioService {
 
   listaUsuario! : Usuario[];
   sub = new Subject<Usuario[]>();
+  subLogin = new Subject<Login>();
+
+
   constructor(private http: HttpClient) { 
     //this.listaUsuario = this.http.get<Usuario[]>('./assets/data/csvjson.json');
     this.http.get<Usuario[]>('/api/usuarios').subscribe(data=>{
       this.listaUsuario = data;
       this.noitificarAll();
     });
-    
+    this.userLogin = {user:"",password:"",rol:"admin"};
   } 
+
+  userLogin: Login;
+
+  getLogin():Observable<Login>{
+    return this.subLogin.asObservable();
+  }
+  noitificarLogin():void{
+    this.subLogin.next(this.userLogin);
+  }
+  logout(){
+    this.userLogin = {user:"",password:"",rol:"invitado"};
+    this.noitificarLogin();
+  }
+  login(user:string,password:string):boolean{
+    let estado = false;
+    if(user == "kevith" && password == "123"){
+      this.userLogin.user = 'kevith';
+      this.userLogin.password = '123';
+      this.userLogin.rol='admin';
+      estado = true;
+    }
+    if(user == "pipe15" && password == "123"){
+      this.userLogin.user = 'pipe15';
+      this.userLogin.password = '123';
+      this.userLogin.rol='no-admin';
+      estado = true;
+    }
+    this.noitificarLogin();
+    return estado;
+  }
 
   noitificarAll():void{
     this.sub.next(this.listaUsuario);

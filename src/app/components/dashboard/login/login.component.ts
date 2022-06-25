@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { UsuarioService } from 'app/services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   form: FormGroup;
 
-  constructor(private fb:FormBuilder,private _snackBar: MatSnackBar,private router: Router) {
+  constructor(private fb:FormBuilder,private _snackBar: MatSnackBar,private router: Router,private _user:UsuarioService) {
     this.form = fb.group({
       user:['',Validators.required],
       password:['',Validators.required],
@@ -28,14 +29,12 @@ export class LoginComponent implements OnInit {
     let user = this.form.value.user;
     let password = this.form.value.password;
 
-    if(user == "kevith" && password == "123"){
-      //lo redirige a la pagina principal
+    if (this._user.login(user,password)) {
       this.fakeLoading();
       this.form.reset();
     }else{
       this.loading = false;
       this.error();
-
     }
     
   }

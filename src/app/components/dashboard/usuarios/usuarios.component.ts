@@ -1,8 +1,14 @@
-import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  NgModule,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatSort,Sort } from '@angular/material/sort';
+import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Usuario } from '@data/interfaces/usuario';
 import { UsuarioService } from 'app/services/usuario.service';
@@ -13,14 +19,19 @@ import { RemoveUsuarioComponent } from '../ventanas/remove-usuario/remove-usuari
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
-  styleUrls: ['./usuarios.component.scss']
+  styleUrls: ['./usuarios.component.scss'],
 })
-
 export class UsuariosComponent implements OnInit {
-
   //#region Atributos
-  displayedColumns: string[] = ['programa','codigo','identificacion', 'nombres', 'apellidos',"acciones"];
-  listUser:Usuario[]=[];
+  displayedColumns: string[] = [
+    'programa',
+    'codigo',
+    'identificacion',
+    'nombres',
+    'apellidos',
+    'acciones',
+  ];
+  listUser: Usuario[] = [];
   dataSource = new MatTableDataSource<Usuario>(this.listUser);
   @ViewChild(MatPaginator) paginator: any;
   @ViewChild(MatSort) sort: any;
@@ -28,111 +39,132 @@ export class UsuariosComponent implements OnInit {
   //#endregion
 
   //#region Constructores
-  constructor(private _usuarios:UsuarioService,private _snackBar: MatSnackBar,public dialog: MatDialog) {
-    this.usuarioSubscripcion = this._usuarios.getUsuarios().subscribe((users:Usuario[]) => {
-      this.dataSource.data = users;
-    });
+  ngAfterViewChecked() {
+    this.changeDetector.detectChanges();
   }
-  ngAfterViewInit() { 
+  constructor(
+    private _usuarios: UsuarioService,
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog,
+    private changeDetector: ChangeDetectorRef
+  ) {
+    this.usuarioSubscripcion = this._usuarios
+      .getUsuarios()
+      .subscribe((users: Usuario[]) => {
+        this.dataSource.data = users;
+      });
+  }
+  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this._usuarios.noitificarAll();
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.usuarioSubscripcion.unsubscribe();
   }
 
   ngOnInit(): void {}
   //#endregion
-  
-  //#region Eventos
-  eliminarUsuario(user:Usuario){
-    this.dialog.open(RemoveUsuarioComponent,{
-      data: {usuario: user, method: "Remove"},
-    }).afterClosed().subscribe((result:any) => {
-      if(result!==undefined)
-        if(result.status==true){
-          this._usuarios.eliminarUsuario(user);
-          this.mensajeConfirmacionEliminar();
-        }
 
-    });
-    
+  //#region Eventos
+  eliminarUsuario(user: Usuario) {
+    this.dialog
+      .open(RemoveUsuarioComponent, {
+        data: { usuario: user, method: 'Remove' },
+      })
+      .afterClosed()
+      .subscribe((result: any) => {
+        if (result !== undefined)
+          if (result.status == true) {
+            this._usuarios.eliminarUsuario(user);
+            this.mensajeConfirmacionEliminar();
+          }
+      });
   }
 
-  editarUsuario(user:Usuario){ 
-    this._usuarios.getUserById(user.identificacion).subscribe(
-      {
-        next: dato=>{
-          this.dialog.open(EditarUsuarioComponent, {
-            data: {usuario: dato, method: "Editar"},height: '80%',width: '90%',disableClose: true
-          }).afterClosed().subscribe((result:any) => {
-            if(result!="false"){
-              this._usuarios.editarUsuario(parseInt(user.identificacion),result);              
+  editarUsuario(user: Usuario) {
+    this._usuarios.getUserById(user.identificacion).subscribe({
+      next: (dato) => {
+        this.dialog
+          .open(EditarUsuarioComponent, {
+            data: { usuario: dato, method: 'Editar' },
+            height: '80%',
+            width: '90%',
+            disableClose: true,
+          })
+          .afterClosed()
+          .subscribe((result: any) => {
+            if (result != 'false') {
+              this._usuarios.editarUsuario(
+                parseInt(user.identificacion),
+                result
+              );
               this.mensajeConfirmacionEditar();
             }
             //if(result.facultad!==undefined && result.programa!==undefined)
           });
-        }
-      }
-    );
-
-    
+      },
+    });
   }
 
   crearUsuario() {
-    let user: Usuario = {facultad: "Facultad de Artes",
-    programa: "Artes Plásticas",
-    codigo: "",
-    identificacion: "",
-    nombres: "",
-    apellidos: "",
-    usuario: "",
-    image:null}; 
-    const dialogRef = this.dialog.open(EditarUsuarioComponent, {
-      data: {usuario:user, method: "Crear Nuevo"},height: '80%',width: '90%',disableClose: true})
-      .afterClosed().subscribe((result:any) => {
-      if(result!="false"){
-        this._usuarios.agregarUsuario(result);
-        this.mensajeConfirmacionCrear();
-      }
-        
+    let user: Usuario = {
+      facultad: 'Facultad de Artes',
+      programa: 'Artes Plásticas',
+      codigo: '',
+      identificacion: '',
+      nombres: '',
+      apellidos: '',
+      usuario: '',
+      image: null,
+    };
+    const dialogRef = this.dialog
+      .open(EditarUsuarioComponent, {
+        data: { usuario: user, method: 'Crear Nuevo' },
+        height: '80%',
+        width: '90%',
+        disableClose: true,
+      })
+      .afterClosed()
+      .subscribe((result: any) => {
+        if (result != 'false') {
+          this._usuarios.agregarUsuario(result);
+          this.mensajeConfirmacionCrear();
+        }
       });
   }
   //#endregion
 
-  
-
   //#region Otros metodos
-  mensajeConfirmacionCrear():void{
-    this.openSnackBar("El usuario se registro correctamente","",{
+  mensajeConfirmacionCrear(): void {
+    this.openSnackBar('El usuario se registro correctamente', '', {
       duration: 2000,
       horizontalPosition: 'center',
-      verticalPosition:'top'
+      verticalPosition: 'top',
     });
   }
 
-  mensajeConfirmacionEliminar():void{
-    this.openSnackBar("El usuario se elimino correctamente","",{
+  mensajeConfirmacionEliminar(): void {
+    this.openSnackBar('El usuario se elimino correctamente', '', {
       duration: 2000,
       horizontalPosition: 'center',
-      verticalPosition:'top'
+      verticalPosition: 'top',
     });
   }
 
-  mensajeConfirmacionEditar():void{
-    this.openSnackBar("El usuario se actualizo correctamente","",{
+  mensajeConfirmacionEditar(): void {
+    this.openSnackBar('El usuario se actualizo correctamente', '', {
       duration: 2000,
       horizontalPosition: 'center',
-      verticalPosition:'top'
+      verticalPosition: 'top',
     });
   }
 
-  openSnackBar(message: string, action: string,f:any) {
-    this._snackBar.open(message, action,f);
+  openSnackBar(message: string, action: string, f: any) {
+    this._snackBar.open(message, action, f);
   }
 
-  time = new Observable<string>(observer => {
+  time = new Observable<string>((observer) => {
     setInterval(() => observer.next(new Date().toString()), 1000);
   });
   //#endregion

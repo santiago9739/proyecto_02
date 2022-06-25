@@ -5,17 +5,28 @@ import { DashboardComponent } from './dashboard.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { EscenariosComponent } from './escenarios/escenarios.component';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { PruebaComponent } from './prueba/prueba.component';
 
 const routes: Routes = [
-  {path:'',component:DashboardComponent,
-  children: [{path:'',component: InicioComponent},
-  {path:'usuario',component: UsuariosComponent},
-  {path:'reporte',component: ReportesComponent},
-  {path:'login',component: LoginComponent}]},
+  {
+    path: '',
+    component: DashboardComponent,
+    children: [
+      { path: '', component: InicioComponent },
+      { path: 'usuario', component: UsuariosComponent },
+      { path: 'categoria', component: CategoriasComponent },
+      { path: 'reporte', component: ReportesComponent },
+      { path: 'escenario', component: EscenariosComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'prueba', component: PruebaComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}

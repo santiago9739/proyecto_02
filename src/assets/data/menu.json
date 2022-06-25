@@ -1,12 +1,32 @@
 [
     {
+        "nombre":"GESTIONAR ESCENARIO",
+        "redirect":"/dashboard/escenario",
+        "icon":"build",
+        "rol":"admin"
+    },
+    {
         "nombre":"Usuario",
         "redirect":"/dashboard/usuario",
-        "icon":"person_outline"
+        "icon":"person_outline",
+        "rol":"admin"
     },
     {
         "nombre":"Reporte",
         "redirect":"/dashboard/reporte",
-        "icon":"assignment"
+        "icon":"assignment",
+        "rol":"admin"
+    },
+    {
+        "nombre":"Menu Principal",
+        "redirect":"/dashboard/",
+        "icon":"home",
+        "rol":"invitado"
+    },
+    {
+        "nombre":"Login",
+        "redirect":"/dashboard/login",
+        "icon":"input",
+        "rol":"invitado"
     }
 ]

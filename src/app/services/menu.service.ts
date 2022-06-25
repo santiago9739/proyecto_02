@@ -13,7 +13,6 @@ export class MenuService {
   
   getMenu():Observable<Menu[]>{
     return this._http.get<Menu[]>('./assets/data/menu.json');
-    this.url = "";
   }
 
   uploadFile(File:any): Observable<any> {

@@ -12,6 +12,11 @@ import { EditarUsuarioComponent } from './ventanas/editar-usuario/editar-usuario
 import { CrearUsuarioComponent } from './ventanas/crear-usuario/crear-usuario.component';
 import { RemoveUsuarioComponent } from './ventanas/remove-usuario/remove-usuario.component';
 import { FooterComponent } from './footer/footer.component';
+import { EscenariosComponent } from './escenarios/escenarios.component';
+import { EditarComponent } from './escenarios/editar/editar.component';
+import { RemoveComponent } from './escenarios/remove/remove.component';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { PruebaComponent } from './prueba/prueba.component';
 
 
 @NgModule({
@@ -24,7 +29,12 @@ import { FooterComponent } from './footer/footer.component';
     EditarUsuarioComponent,
     CrearUsuarioComponent,
     RemoveUsuarioComponent,
-    FooterComponent
+    FooterComponent,
+    EscenariosComponent,
+    EditarComponent,
+    RemoveComponent,
+    CategoriasComponent,
+    PruebaComponent
   ],
   imports: [
     CommonModule,

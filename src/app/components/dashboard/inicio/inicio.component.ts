@@ -23,7 +23,6 @@ export class InicioComponent implements OnInit {
   constructor(private _usuarios:UsuarioService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    let suma=2+3;
   }
 
 }
