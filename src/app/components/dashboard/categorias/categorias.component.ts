@@ -52,7 +52,9 @@ export class CategoriasComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('editando la rama develop');
+  }
   displayedColumns: string[] = ['nombre', 'descripcion', 'foto'];
   clickedRows = new Array<Categoria>();
 
