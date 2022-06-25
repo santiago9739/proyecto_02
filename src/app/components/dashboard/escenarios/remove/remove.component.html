@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Eliminar Escenario: {{nombre}}</h1>
+<div mat-dialog-content>
+    ¿Realmente desea eliminar este escenario?
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button mat-button (click)="aceptar()" cdkFocusInitial>Aceptar</button>
+</div>
