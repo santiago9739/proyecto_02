@@ -31,7 +31,7 @@ export class CategoriasComponent implements OnInit {
   @ViewChild(MatSort) sort: any;
   @ViewChild('imagen') elementInput!: ElementRef;
   dataSource = new MatTableDataSource<Categoria>(this.categorias);
-  foto: string = '';
+  foto: any = null;
   displayedColumns: string[] = ['nombre', 'descripcion', 'foto'];
   clickedRows = new Array<Categoria>();
   bandera: boolean = false;
@@ -223,6 +223,7 @@ export class CategoriasComponent implements OnInit {
   onImageDefault() {
     this.retrievedImage = undefined;
     this.elementInput.nativeElement.value = '';
+    this.foto = null;
     //this.escenario.esc_foto = null;
   }
   //Gets called when the user selects an image
