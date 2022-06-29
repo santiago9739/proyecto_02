@@ -100,7 +100,7 @@ export class EditarComponent implements OnInit {
 
   //#region Eventos
   cancelar() {
-    this.dialogRef.close('false');
+    this.dialogRef.close(false);
   }
 
   onChangeStatus() {
