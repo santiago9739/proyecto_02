@@ -50,7 +50,7 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="''">
                     <mat-form-field class="ancho" appearance="fill">
                         <mat-label>Nombre Escenario</mat-label>
-                        <input value="" onkeyup="javascript:this.value=this.value.toUpperCase();"
+                        <input autofocus value="" onkeyup="javascript:this.value=this.value.toUpperCase();"
                             (keyup)="onChangeNombre()" [formControl]="nombreControl" matInput autocapitalize="off"
                             formControlName="nombre" autocomplete="off">
                     </mat-form-field>
