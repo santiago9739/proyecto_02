@@ -123,7 +123,7 @@ export class EditarComponent implements OnInit {
     if (this.data.dato.esc_nombre != this.nombreControl.value) {
       this._escenarios.getEscenarioById(this.nombreControl.value).subscribe({
         next: (esc) => {
-          if (esc != null) {
+          if (esc != null) { 
             this.mensajeNombreExistente();
           } else {
             this.registrar(v_categoria);
