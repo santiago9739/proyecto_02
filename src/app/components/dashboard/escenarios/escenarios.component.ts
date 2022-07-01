@@ -97,7 +97,7 @@ export class EscenariosComponent implements OnInit {
           })
           .afterClosed()
           .subscribe((result: any) => {
-            if (result != 'false') {
+            if (result != false) {
               this._escenarios.editarEscenario(esc.esc_nombre, result);
               this.mensajeConfirmacionEditar();
             }
@@ -129,7 +129,7 @@ export class EscenariosComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((result: any) => {
-        if (result != 'false') {
+        if (result != false) {
           this._escenarios.agregarEscenario(result);
           this.mensajeConfirmacionCrear();
         }

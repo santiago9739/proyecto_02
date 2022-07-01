@@ -2,7 +2,7 @@
     <h2 mat-dialog-title style="text-align: center;">{{titulo}} Escenario</h2>
     <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
 
-    <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="enviar()">
+    <form *ngIf="!loading" [formGroup]="form">
         <mat-card style="margin-top: 10px;">
             <mat-grid-list cols="4" rowHeight="50px">
                 <mat-grid-tile [colspan]="3" [rowspan]="5" [style.background]="'#B3B6B7'">
@@ -58,7 +58,7 @@
             </mat-grid-list>
             <br>
             <div class="example-button-row" style="text-align: right;">
-                <button class="btn btn-primary" type="submit" mat-raised-button [disabled]="!status"> Aceptar
+                <button class="btn btn-primary" (click)="enviar()" type="submit" mat-raised-button [disabled]="!status"> Aceptar
                     <mat-icon>check_circle_outline</mat-icon>
                 </button>
                 <button class="btn btn-danger" (click)="cancelar()" mat-raised-button> Cancelar

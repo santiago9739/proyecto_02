@@ -1,5 +1,11 @@
 [
     {
+        "nombre":"RESERVAR ESPACIOS",
+        "redirect":"/dashboard/reservacion/listarCategorias",
+        "icon":"app_registration",
+        "rol":"admin"
+    },
+    {
         "nombre":"GESTIONAR ESCENARIO",
         "redirect":"/dashboard/escenario",
         "icon":"build",

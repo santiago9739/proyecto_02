@@ -8,6 +8,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { EscenariosComponent } from './escenarios/escenarios.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { PruebaComponent } from './prueba/prueba.component';
+import { ListCategoriasComponent } from './list-categorias/list-categorias.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: 'escenario', component: EscenariosComponent },
       { path: 'login', component: LoginComponent },
       { path: 'prueba', component: PruebaComponent },
+      { path: 'reservacion/listarCategorias', component: ListCategoriasComponent}
     ],
   },
 ];
