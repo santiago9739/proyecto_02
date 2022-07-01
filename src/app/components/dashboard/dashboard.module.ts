@@ -17,6 +17,7 @@ import { EditarComponent } from './escenarios/editar/editar.component';
 import { RemoveComponent } from './escenarios/remove/remove.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { PruebaComponent } from './prueba/prueba.component';
+import { ListCategoriasComponent } from './list-categorias/list-categorias.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { PruebaComponent } from './prueba/prueba.component';
     EditarComponent,
     RemoveComponent,
     CategoriasComponent,
-    PruebaComponent
+    PruebaComponent,
+    ListCategoriasComponent
   ],
   imports: [
     CommonModule,
