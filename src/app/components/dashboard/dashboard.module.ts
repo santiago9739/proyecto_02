@@ -18,6 +18,7 @@ import { RemoveComponent } from './escenarios/remove/remove.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { PruebaComponent } from './prueba/prueba.component';
 import { ListCategoriasComponent } from './list-categorias/list-categorias.component';
+import { ListEscenariosComponent } from './list-escenarios/list-escenarios.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ListCategoriasComponent } from './list-categorias/list-categorias.compo
     RemoveComponent,
     CategoriasComponent,
     PruebaComponent,
-    ListCategoriasComponent
+    ListCategoriasComponent,
+    ListEscenariosComponent
   ],
   imports: [
     CommonModule,
