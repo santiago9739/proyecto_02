@@ -1,4 +1,4 @@
-<mat-toolbar color="">
+<mat-toolbar color="" class="color" >
     <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon"
         aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
@@ -17,10 +17,10 @@
     -->
     
 
-    <span class="mx-3 text-secondary">CENTRO DEPORTIVO UNIVERSITARIO</span>
+    <span class="mx-3">CENTRO DEPORTIVO UNIVERSITARIO</span>
     <span class="example-spacer"></span>
 
-    <!--{{login.rol}}-->Usuario
+    {{login.rol}}
     <div *ngIf="login.rol=='admin'">
         <button class="example-icon sin-pointer" mat-icon-button aria-label="Example icon-button with logout icon">
             <mat-icon>account_circle</mat-icon>
