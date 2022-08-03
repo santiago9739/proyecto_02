@@ -2,7 +2,7 @@
     {
         "nombre":"RESERVAR ESPACIOS",
         "redirect":"/dashboard/reservacion/listarCategorias",
-        "icon":"app_registration",
+        "icon":"edit_calendar",
         "rol":"admin"
     },
     {

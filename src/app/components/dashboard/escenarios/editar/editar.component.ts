@@ -139,7 +139,7 @@ export class EditarComponent implements OnInit {
     this._escenarios.getEscenarioById(this.nombreControl.value).subscribe({
       next: (data) => {
         if (data != null) this.mensajeNombreExistente();
-        else this.registrar(v_categoria);
+        else this.registrar(v_categoria); 
       },
     });
   }
@@ -152,11 +152,18 @@ export class EditarComponent implements OnInit {
       esc_estado: this.estadoControl.value == 'HABILITADO' ? '0' : '1',
       categoria: v_categoria,
     };
-    this.loading = true;
-    setTimeout(() => {
-      // lo redireccionamos al dasboard
-      this.dialogRef.close(escenario);
-    }, 500);
+
+    if(escenario.esc_nombre.length>30){
+      this.mensajeNombreCarecteresSuperados();
+    }else{
+      this.loading = true;
+      setTimeout(() => {
+        // lo redireccionamos al dasboard
+        this.dialogRef.close(escenario);
+      }, 500);
+    }
+
+    
   }
 
   onImageDefault() {
@@ -188,6 +195,18 @@ export class EditarComponent implements OnInit {
   mensajeNombreExistente(): void {
     this.openSnackBar(
       'Error: Ya existe un escenario con ese mismo nombre...',
+      'X',
+      {
+        duration: 2000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+      }
+    );
+  }
+
+  mensajeNombreCarecteresSuperados(): void {
+    this.openSnackBar(
+      'Error: el nombre del escenario debe tener maximo 30 caracteres',
       'X',
       {
         duration: 2000,

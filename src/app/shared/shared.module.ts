@@ -24,7 +24,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   imports: [
     FormsModule,
@@ -51,7 +54,10 @@ import {MatCardModule} from '@angular/material/card';
     MatSelectModule,
     MatGridListModule,
     MatCardModule,
-    
+    MatCheckboxModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   declarations: [...fromComponents.Components],
   exports:[
@@ -82,6 +88,10 @@ import {MatCardModule} from '@angular/material/card';
     MatSelectModule,
     MatGridListModule,
     MatCardModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ]
 })
 export class SharedModule { 

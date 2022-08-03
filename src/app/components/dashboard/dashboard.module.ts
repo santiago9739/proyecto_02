@@ -19,7 +19,7 @@ import { CategoriasComponent } from './categorias/categorias.component';
 import { PruebaComponent } from './prueba/prueba.component';
 import { ListCategoriasComponent } from './list-categorias/list-categorias.component';
 import { ListEscenariosComponent } from './list-escenarios/list-escenarios.component';
-
+import { HorariosComponent } from './horarios/horarios.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ import { ListEscenariosComponent } from './list-escenarios/list-escenarios.compo
     CategoriasComponent,
     PruebaComponent,
     ListCategoriasComponent,
-    ListEscenariosComponent
+    ListEscenariosComponent,
+    HorariosComponent
   ],
   imports: [
     CommonModule,

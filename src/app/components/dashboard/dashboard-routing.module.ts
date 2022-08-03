@@ -10,6 +10,7 @@ import { CategoriasComponent } from './categorias/categorias.component';
 import { PruebaComponent } from './prueba/prueba.component';
 import { ListCategoriasComponent } from './list-categorias/list-categorias.component';
 import { ListEscenariosComponent } from './list-escenarios/list-escenarios.component';
+import { HorariosComponent } from './horarios/horarios.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
         path: 'reservacion/listarEscenarios',
         component: ListEscenariosComponent,
       },
+      {
+        path: 'reservacion/horarios',
+        component: HorariosComponent,
+      }
     ],
   },
 ];

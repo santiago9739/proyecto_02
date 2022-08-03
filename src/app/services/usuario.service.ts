@@ -17,7 +17,7 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { 
     //this.listaUsuario = this.http.get<Usuario[]>('./assets/data/csvjson.json');
-    this.http.get<Usuario[]>('/api/usuarios').subscribe(data=>{
+    this.http.get<Usuario[]>('/api/user/usuarios').subscribe(data=>{
       this.listaUsuario = data;
       this.noitificarAll();
     });
@@ -67,7 +67,7 @@ export class UsuarioService {
   }
   */
   eliminarUsuario(user:Usuario):boolean{
-    this.http.delete("api/usuarios/"+user.identificacion).subscribe({
+    this.http.delete("api/user/usuarios/"+user.identificacion).subscribe({
       next: data=>{
         this.http.get<Usuario[]>('/api/usuarios').subscribe(data=>{
           this.listaUsuario = data;
@@ -102,9 +102,9 @@ export class UsuarioService {
       image: user.image
     };
 
-    this.http.post<Usuario[]>("api/usuarios",user).subscribe({
+    this.http.post<Usuario[]>("api/user/usuarios",user).subscribe({
       next: data => {
-        this.http.get<Usuario[]>('/api/usuarios').subscribe(data=>{
+        this.http.get<Usuario[]>('/api/user/usuarios').subscribe(data=>{
           this.listaUsuario = data;
           this.noitificarAll();
         });
@@ -154,14 +154,14 @@ export class UsuarioService {
   }
 
   getUserById(id:any):Observable<Usuario>{
-    return this.http.get<Usuario>(`api/usuarios/${id}`);
+    return this.http.get<Usuario>(`api/user/usuarios/${id}`);
   }
 
   editarUsuario(id:number,user:Usuario){
 
-    this.http.put("api/usuarios/"+id,user).subscribe({
+    this.http.put("api/user/usuarios/"+id,user).subscribe({
       next:(data)=>{
-        this.http.get<Usuario[]>('/api/usuarios').subscribe(data=>{
+        this.http.get<Usuario[]>('/api/user/usuarios').subscribe(data=>{
           this.listaUsuario = data;
           this.noitificarAll();
         });

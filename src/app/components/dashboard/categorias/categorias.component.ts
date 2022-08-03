@@ -85,6 +85,7 @@ export class CategoriasComponent implements OnInit {
 
   //#region Mutadores
   crear() {
+    //TODO LJ
     let categoria: Categoria = {
       cat_nombre: this.nombreControl.value,
       cat_descripcion: this.descripcionControl.value,
@@ -112,7 +113,12 @@ export class CategoriasComponent implements OnInit {
 
   actualizar() {
     this.categoria.cat_descripcion = this.descripcionControl.value;
-    this.categoria.cat_foto = this.foto;
+    
+    if(this.foto!=null){
+      this.categoria.cat_foto = this.foto;
+    }
+    
+    
     this._categorias
       .editarCategoria(this.categoria.cat_nombre, this.categoria)
       .subscribe({
@@ -124,7 +130,6 @@ export class CategoriasComponent implements OnInit {
           this.limpiarInfoCategoria();
         },
       });
-    console.log(this.categoria);
   }
 
   eliminar() {

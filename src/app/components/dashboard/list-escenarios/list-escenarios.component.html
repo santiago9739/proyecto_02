@@ -8,7 +8,7 @@
                 <div class="card h-100">
                     <!-- Product image-->
                     <div class="card h-200 pointer"
-                        [routerLink]="['/dashboard/reservacion/listarEscenarios',  {cat_nombre:item.esc_nombre}]">
+                        [routerLink]="['/dashboard/reservacion/horarios',  {esc_nombre:item.esc_nombre}]">
                         <img class="img-responsive card-img-top" width="100" height="180"
                             [src]="'data:image/jpeg;base64,'+item.esc_foto" alt="..." />
                     </div>

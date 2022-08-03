@@ -1,0 +1,17 @@
+
+<h1 mat-dialog-title>Eliminar {{titulo}}: {{nombre}}</h1>
+<div mat-dialog-content>
+    <p class="text-danger h3">
+        ¿Realmente desea eliminar {{informacion}}?
+    </p>
+    
+    <p>DIA: {{horario.pk_horario.hor_dia}}</p>
+    <p>FECHA INICIO: {{horario.pk_horario.hor_fecha_inicio}}</p>
+    <p>FECHA FIN: {{horario.pk_horario.hor_fecha_fin}}</p>
+    <p>{{nombre}}: {{programa}}</p>
+    
+</div>
+<div mat-dialog-actions>
+    <button class="btn btn-danger" mat-button (click)="cancelar()">Cancelar</button>
+    <button class="btn btn-primary" mat-button (click)="aceptar()" cdkFocusInitial>Aceptar</button>
+</div>

@@ -50,6 +50,8 @@ export class EscenariosComponent implements OnInit {
           });
         }
       });
+      console.log();
+      
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -86,8 +88,6 @@ export class EscenariosComponent implements OnInit {
   editarEscenario(escenario: Escenario) {
     this._escenarios.getEscenarioById(escenario.esc_nombre).subscribe({
       next: (esc) => {
-        console.log(esc);
-
         this.dialog
           .open(EditarComponent, {
             data: { dato: esc, method: 'Editar' },
@@ -147,7 +147,7 @@ export class EscenariosComponent implements OnInit {
   }
 
   mensajeConfirmacionEliminar(): void {
-    this.openSnackBar('El usuario se elimino correctamente', '', {
+    this.openSnackBar('El escenario se elimino correctamente', '', {
       duration: 2000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
@@ -155,7 +155,7 @@ export class EscenariosComponent implements OnInit {
   }
 
   mensajeConfirmacionEditar(): void {
-    this.openSnackBar('El usuario se actualizo correctamente', '', {
+    this.openSnackBar('El escenario se actualizo correctamente', '', {
       duration: 2000,
       horizontalPosition: 'center',
       verticalPosition: 'top',

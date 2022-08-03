@@ -68,7 +68,7 @@ export class EditarUsuarioComponent implements OnInit {
         this.facultadControl.setValue(this.usuario.facultad);
       this._programas.getProgramasByFacultad(this.facultadControl.value).subscribe(programas=>{
         if(this.titulo=="Crear Nuevo")
-          this.programaControl.setValue(programas[0].programa);
+          this.programaControl.setValue(programas[0].pro_nombre);
         else
           this.programaControl.setValue(this.usuario.programa);
         this.listaProgramas = programas;
@@ -101,7 +101,7 @@ export class EditarUsuarioComponent implements OnInit {
   
   onChangeFacultad() {
     this._programas.getProgramasByFacultad(this.facultadControl.value).subscribe(programas=>{
-      this.programaControl.setValue(programas[0].programa);
+      this.programaControl.setValue(programas[0].pro_nombre);
       this.listaProgramas = programas;
     });
   }

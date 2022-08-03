@@ -51,14 +51,14 @@
                 </mat-grid-tile>
 
                 <mat-grid-tile [colspan]="3" [rowspan]="1" [style.background]="'lightgreen2'">
-                    <input type="file" (change)="onFileChanged($event)">
+                    <input accept="image/png,image/jpeg" type="file" (change)="onFileChanged($event)">
                     <input type="button" (click)="onImageDefault()" class="btn btn-warning mx-5" value="Eliminar Foto">
                 </mat-grid-tile>
 
             </mat-grid-list>
             <br>
             <div class="example-button-row" style="text-align: right;">
-                <button class="btn btn-primary" (click)="enviar()" type="submit" mat-raised-button [disabled]="!status"> Aceptar
+                <button class="btn btn-primary" (click)="enviar()" type="submit" mat-raised-button [disabled]="!status"> {{titulo.split(' ')[0]}}
                     <mat-icon>check_circle_outline</mat-icon>
                 </button>
                 <button class="btn btn-danger" (click)="cancelar()" mat-raised-button> Cancelar
