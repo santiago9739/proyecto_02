@@ -390,8 +390,8 @@ export class HorariosComponent implements OnInit {
   mensajeErrorCrearHorario(): void {
     this.openSnackBar('No se registro correctamente el horario, rango incorrecto', '', {
       duration: 2000,
-      horizontalPosition: 'top',
-      verticalPosition: 'center',
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
     });
   }
 
