@@ -1,3 +1,45 @@
+*{
+    font-family: 'RobotoCondensed';
+}
+
+#titulonoticias{
+    color: rgb(15, 32, 65);
+}
+
+.h4{
+    background-color: rgba(255, 255, 255, 0.773);
+    
+}
+
+#carrusel{  
+    background-size: 50% 50%;
+    background-color: rgb(15, 32, 65);
+}
+
+#pista {
+    object-fit: cover;
+}
+
+#canchas{
+    object-fit: cover;
+}
+
+#cdu{
+    object-fit: cover;
+}
+
+#oficinas{
+    object-fit: cover;
+}
+
+#piscina{
+    object-fit: cover;
+}
+
+#futbol{
+    object-fit: cover;
+}
+
 .carousel-control-prev-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5L4.25 4l2.5-2.5L5.25 0z'/%3e%3c/svg%3e");
 }  
